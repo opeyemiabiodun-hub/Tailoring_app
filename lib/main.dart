@@ -1,4 +1,3 @@
-cat << 'EOF' > /root/tailoring_app/lib/main.dart
 import 'package:flutter/material.dart';
 
 void main() {
@@ -158,4 +157,3 @@ class _ClientListScreenState extends State<ClientListScreen> {
     );
   }
 }
-EOF
