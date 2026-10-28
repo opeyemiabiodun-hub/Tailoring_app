@@ -15,7 +15,6 @@ class Client {
     this.notes,
   });
 
-  // Convert Client to Map for saving
   Map<String, dynamic> toMap() {
     return {
       'clientId': clientId,
@@ -27,7 +26,6 @@ class Client {
     };
   }
 
-  // Create Client from Map when loading
   factory Client.fromMap(Map<String, dynamic> map) {
     return Client(
       clientId: map['clientId'],
@@ -63,6 +61,16 @@ class Measurement {
       'fieldName': fieldName,
       'measurementValue': measurementValue,
     };
+  }
+
+  factory Measurement.fromMap(Map<String, dynamic> map) {
+    return Measurement(
+      measurementId: map['measurementId'],
+      clientId: map['clientId'],
+      outfitPart: map['outfitPart'],
+      fieldName: map['fieldName'],
+      measurementValue: map['measurementValue'],
+    );
   }
 }
 
@@ -104,5 +112,21 @@ class Order {
       'deliveryDate': deliveryDate.toIso8601String(),
       'orderStatus': orderStatus,
     };
+  }
+
+  // ---> Added this part so Order can read data from the database safely!
+  factory Order.fromMap(Map<String, dynamic> map) {
+    return Order(
+      orderId: map['orderId'],
+      clientId: map['clientId'],
+      orderDescription: map['orderDescription'],
+      stylePhotoPath: map['stylePhotoPath'],
+      fabricPhotoPath: map['fabricPhotoPath'],
+      totalAmount: map['totalAmount'],
+      depositPaid: map['depositPaid'],
+      balanceRemaining: map['balanceRemaining'],
+      deliveryDate: DateTime.parse(map['deliveryDate']),
+      orderStatus: map['orderStatus'],
+    );
   }
 }
