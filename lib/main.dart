@@ -216,9 +216,7 @@ class _ClientListTabState extends State<ClientListTab> {
                   title: Text(client.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: Text('${client.phoneNumber} • ${client.gender}'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                  onTap: () {
-                    // Navigate to details screen if desired
-                  },
+                  onTap: () {},
                 ),
               );
             },
@@ -266,7 +264,7 @@ class _AddOrderTabState extends State<AddOrderTab> {
         gender: _selectedGender,
       );
 
-      await DatabaseHelper.instance.insertClient(newClient);[span_0](start_span)[span_0](end_span)
+      await DatabaseHelper.instance.insertClient(newClient);
 
       double total = double.tryParse(_totalController.text) ?? 0.0;
       double deposit = double.tryParse(_depositController.text) ?? 0.0;
@@ -283,7 +281,7 @@ class _AddOrderTabState extends State<AddOrderTab> {
         orderStatus: 'Pending',
       );
 
-      await DatabaseHelper.instance.insertOrder(newOrder);[span_1](start_span)[span_1](end_span)
+      await DatabaseHelper.instance.insertOrder(newOrder);
 
       for (var entry in _measurementControllers.entries) {
         if (entry.value.text.isNotEmpty) {
@@ -295,7 +293,7 @@ class _AddOrderTabState extends State<AddOrderTab> {
             fieldName: entry.key,
             measurementValue: val,
           );
-          await DatabaseHelper.instance.insertMeasurement(measurement);[span_2](start_span)[span_2](end_span)
+          await DatabaseHelper.instance.insertMeasurement(measurement);
         }
       }
 
